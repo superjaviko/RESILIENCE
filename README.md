@@ -12,10 +12,9 @@ Technical Stack
 * **Research Focus:** Trustworthy AI Frameworks, Risk Governance, and Human-Machine Integration.
 
 Repository Structure
-* `src/`: Core scripts, including AI adaptive logic and interaction mechanics.
 * `models/`: 3D assets, textures, and environmental design files.
 * `Documentation/`: Technical artefacts, flowcharts, and research documentation.
-* `Media/`: High-resolution screenshots and links to video demonstrations.
+* `Media/`: Gameplays of the expimental tests.
 
 Gameplay Demonstration
 Due to file size constraints on GitHub, the full high-definition gameplay demonstration is available via the link below:
@@ -26,11 +25,11 @@ Due to file size constraints on GitHub, the full high-definition gameplay demons
 Academic Publication & Context
 The methodology and experimental results of this prototype were published in **Elsevier (Procedia Computer Science)**. This project serves as a practical application of the theories discussed in the paper regarding the mitigation of linguistic barriers through immersive technology.
 
-Research Focus:** *Trustworthy AI, Human-Centricity, and User Acceptance Modeling (UTAUT).*
+Research Focus: Trustworthy AI, Human-Centricity, and User Acceptance Modeling.
 
-Strategic Contribution to XTREME Project
-As a **Research Assistant**, I aim to scale these frameworks within the **XTREME Consortium**. My experience in Blender and Unity, combined with a focus on **Risk Governance**, allows me to bridge the gap between technical development and ethical, inclusive AI implementation.
+1. https://www.sciencedirect.com/science/article/pii/S1877050925003886
+2. https://www.sciencedirect.com/science/article/pii/S2405896324015982
+3. https://www.sciencedirect.com/science/article/pii/S187705092600548X
 
----
-Contact:** Javier | Management Engineer & XR Specialist  
-Research Fellow at the University of Calabria.*
+Contact: Javier | Management Engineer & XR Specialist  
+Research Fellow at the University of Calabria.
