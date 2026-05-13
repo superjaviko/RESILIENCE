@@ -1,0 +1,70 @@
+# Autostart VR Session V2
+#
+# Author: Opheroth
+#
+# Date (YYYY/MM/DD): 2023/12/29
+
+
+import bpy
+xrs = bpy.context.window_manager.xr_session_settings
+
+#The script will check this number of times 
+#For the shader compilation to be done
+counter = 0
+#This is the interval between each check
+checkInterval = 1
+
+#
+vrCameraClipEnd = 0
+#Check for shader compilation to finish
+def isShaderCompiling():
+    global counter
+    global checkInternal
+    counter += 1
+    print(counter, "waiting for shader compilation")
+    if counter > 2:
+        #If the shader compilation is done, enable VR
+        if bpy.app.is_job_running("SHADER_COMPILATION") == False:
+            StartVRSession()
+            return None
+    if counter == 100:
+        print("Shader Compilation took more than ", checkInterval, " seconds, and the script failed to run")
+        return None
+    #Returning this value means the function will run again after
+    # checkInterval seconds
+    return checkInterval
+
+#Start VR Session
+def StartVRSession():
+    global vrCameraClipEnd
+    vrCameraClipEnd = xrs.clip_end
+    for area in bpy.context.screen.areas:
+        if area.type == "VIEW_3D":
+            region = next((region for region in area.regions if region.type == 'WINDOW'), None)
+            if region is not None:
+                try:
+                    Running = False
+                    xr = bpy.context.window_manager.xr_session_state
+                    Running = xr.is_running(bpy.context)
+                except:
+                    pass
+                try:
+                    if Running == False:
+                        xrs.clip_end = 0.11
+                        override = {"area": area, "region": region}
+                        bpy.ops.wm.xr_session_toggle(override)
+                        print("Starting VR")
+                        xrs.clip_end = vrCameraClipEnd
+                    else:
+                        print("Already Running")
+                except ValueError:
+                    print(ValueError)
+
+
+#Set shading to Rendered
+for area in bpy.context.workspace.screens[0].areas:
+    for space in area.spaces:
+        if space.type == 'VIEW_3D':
+            space.shading.type = 'MATERIAL'
+            #Call Function to check if shader compilation is done
+            bpy.app.timers.register(isShaderCompiling)
